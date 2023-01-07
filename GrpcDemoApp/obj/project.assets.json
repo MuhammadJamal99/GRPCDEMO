@@ -747,9 +747,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Workplace\\GRPC\\GrpcDemoApp\\GrpcDemoApp.csproj",
-      "projectName": "GrpcDemoApp",
-      "projectPath": "E:\\Workplace\\GRPC\\GrpcDemoApp\\GrpcDemoApp.csproj",
+      "projectUniqueName": "E:\\Workplace\\GRPC\\GrpcDemoApp\\GRPCService.csproj",
+      "projectName": "GRPCService",
+      "projectPath": "E:\\Workplace\\GRPC\\GrpcDemoApp\\GRPCService.csproj",
       "packagesPath": "C:\\Users\\GENERAL\\.nuget\\packages\\",
       "outputPath": "E:\\Workplace\\GRPC\\GrpcDemoApp\\obj\\",
       "projectStyle": "PackageReference",
