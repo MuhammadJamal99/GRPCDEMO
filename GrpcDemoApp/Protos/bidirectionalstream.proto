@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "GRPCService";
+
+package bidirectionalstream;
+
+service BiDirectionalStream {
+  rpc BiDirectionalStream (stream BiDirectionalMessage) returns (stream BiDirectionalMessage);
+}
+message BiDirectionalMessage {
+	string message = 1;
+}
