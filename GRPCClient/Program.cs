@@ -14,6 +14,7 @@ public class Program
         //await GetUnraryResponse();
         //await GetServerStream();
         //await SendClientStream();
+        await BiDirectionalStream();
         Console.ReadKey();
     }
 
@@ -82,6 +83,40 @@ public class Program
             }
             await stream.RequestStream.CompleteAsync();
             Console.WriteLine("Client Stream Completed");
+            await channel.ShutdownAsync();
+        }
+    #endregion
+
+    #region BiDirectional Stream
+        private static async Task BiDirectionalStream()
+        {
+            var channel = GrpcChannel.ForAddress("http://localhost:5000");
+            var biDirectionalStreamClient = new BiDirectionalStream.BiDirectionalStreamClient(channel);
+            var stream = biDirectionalStreamClient.BiDirectionalStream();
+            var requestTasks = Task.Run(async () => 
+            {
+                for(int i = 1; i <= 10; i++)
+                {
+                    var randomNumber = _random.Next(1, 10);
+                    await Task.Delay(randomNumber * 1000);
+                    await stream.RequestStream.WriteAsync(new BiDirectionalMessage() 
+                    {
+                        Message = $"Message {i}"
+                    });
+                    Console.WriteLine($"Send Request: Message {i}");
+                }
+                await stream.RequestStream.CompleteAsync();
+            });
+            var responseTasks = Task.Run(async () => 
+            {
+                while (await stream.ResponseStream.MoveNext(CancellationToken.None))
+                {
+                    Console.WriteLine($"Received Response : {stream.ResponseStream.Current.Message}");
+                }
+                Console.WriteLine("Response Completed");
+            });
+            await Task.WhenAll(requestTasks, responseTasks);
+            Console.WriteLine("BiDirectional Stream Completed");
             await channel.ShutdownAsync();
         }
     #endregion

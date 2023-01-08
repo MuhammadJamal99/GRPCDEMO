@@ -8,6 +8,7 @@
   </PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="Protos\bidirectionalstream.proto" />
 	  <None Remove="Protos\clientstream.proto" />
 	  <None Remove="Protos\product.proto" />
 	  <None Remove="Protos\serverstream.proto" />
@@ -22,6 +23,7 @@
 	  </PackageReference>
 	</ItemGroup>
 	<ItemGroup>
+		
 		<Protobuf Include="Protos\sample.proto">
 		  <GrpcServices>Client</GrpcServices>
 		</Protobuf>
@@ -32,6 +34,9 @@
 			<GrpcServices>Client</GrpcServices>
 		</Protobuf>
 		<Protobuf Include="Protos\clientstream.proto">
+			<GrpcServices>Client</GrpcServices>
+		</Protobuf>
+		<Protobuf Include="Protos\bidirectionalstream.proto">
 			<GrpcServices>Client</GrpcServices>
 		</Protobuf>
 	</ItemGroup>
