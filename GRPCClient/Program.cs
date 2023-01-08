@@ -13,7 +13,7 @@ public class Program
         _random = new Random();
         //await GetUnraryResponse();
         //await GetServerStream();
-        await SendClientStream();
+        //await SendClientStream();
         Console.ReadKey();
     }
 
