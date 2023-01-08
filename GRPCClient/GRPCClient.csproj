@@ -8,7 +8,9 @@
   </PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="Protos\clientstream.proto" />
 	  <None Remove="Protos\product.proto" />
+	  <None Remove="Protos\serverstream.proto" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -24,6 +26,12 @@
 		  <GrpcServices>Client</GrpcServices>
 		</Protobuf>
 		<Protobuf Include="Protos\product.proto">
+			<GrpcServices>Client</GrpcServices>
+		</Protobuf>
+		<Protobuf Include="Protos\serverstream.proto">
+			<GrpcServices>Client</GrpcServices>
+		</Protobuf>
+		<Protobuf Include="Protos\clientstream.proto">
 			<GrpcServices>Client</GrpcServices>
 		</Protobuf>
 	</ItemGroup>
